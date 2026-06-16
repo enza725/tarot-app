@@ -1,0 +1,78 @@
+.tarot-card {
+  width: 160px;
+  height: 280px;
+  /* 3D効果を与える（遠近感） */
+  perspective: 800px;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* 要素の子要素を3D空間に配置することを示す */
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+.card-inner.revealed {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  inset: 0;
+  border: 2px solid #c9922a;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* 3次元空間で裏面を可視にするかどうかの設定 */
+  backface-visibility: hidden;
+}
+
+.card-back {
+  background: #12100e;
+  color: #c9922a;
+  font-size: 48px;
+}
+
+.card-front {
+  background: #f5edd6;
+  color: #12100e;
+  transform: rotateY(180deg);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: conver;
+  border-radius: 10px;
+}
+
+.tarot-meaning {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tarot-keywords {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.tarot-keyword-tag {
+  padding: 4px 12px;
+  border: 1px solid #c9922a;
+  border-radius: 999px;
+  color: #e8b84b;
+  font-size: 14px;
+}
+
+.tarot-reading {
+  text-align: left;
+  /* white-space: pre-line; */
+}
