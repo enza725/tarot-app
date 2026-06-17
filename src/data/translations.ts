@@ -19,7 +19,7 @@ interface TranslationData {
 
 export const translations: TranslationData = {
   subtitle: {
-    ja: "今日のあなたは、どのカードと出会う出ろう？",
+    ja: "今日のあなたは、どのカードと出会うだろう？",
     zh: "今天的你會遇見哪張牌？"
   },
   languageBtn: {
