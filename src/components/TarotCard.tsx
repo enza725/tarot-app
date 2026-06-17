@@ -17,7 +17,7 @@ function TarotCard({ name, image, keywords, reading, isDrawn }: TarotCardProps) 
             <img src={image} alt={name} className="card-image"></img>
           </div>
           <div className="card-back">
-            <img src="/cards/card_back.png" className="card-image"></img>
+            <img src="/cards/card_back.webp" className="card-image"></img>
           </div>
         </div>
       </div>

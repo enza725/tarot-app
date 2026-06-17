@@ -33,7 +33,6 @@
 .card-back {
   background: #12100e;
   color: #c9922a;
-  font-size: 48px;
 }
 
 .card-front {
@@ -43,8 +42,8 @@
 }
 
 .card-image {
-  width: 100%;
-  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
   object-fit: conver;
   border-radius: 10px;
 }
@@ -54,7 +53,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .tarot-meaning {
+    width: 100%;
+  }
 }
 
 .tarot-keywords {
@@ -73,6 +78,7 @@
 }
 
 .tarot-reading {
+  font-size: clamp(12px, 16px, 20px);
   text-align: left;
   /* white-space: pre-line; */
 }

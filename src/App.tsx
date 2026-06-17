@@ -27,12 +27,12 @@ function App() {
 
   return (
     <main className="app">
-      <h1>✦ Arcana ✦</h1>
-      <p>{translations.subtitle[selectedLanguage]}</p>
+      <h1 className="title">✦ Arcana ✦</h1>
+      <p className="subtitle">{translations.subtitle[selectedLanguage]}</p>
 
       <div className='language-div'>
         {languageList.map((language) => (
-          <button key={language} onClick={() => changeLanguage(language)}>
+          <button className="language-btn" key={language} onClick={() => changeLanguage(language)}>
             {translations.languageBtn[language]}
           </button>
         ))}
@@ -46,7 +46,7 @@ function App() {
         isDrawn={isDrawn}
       />
 
-      <button onClick={drawCard}>
+      <button className="draw-btn" onClick={drawCard}>
         {isDrawn ? translations.redrawBtn[selectedLanguage] : translations.drawBtn[selectedLanguage]}
       </button>
     </main>
