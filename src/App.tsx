@@ -1,11 +1,19 @@
 import { useState } from 'react'
 import './App.css'
 import { tarotCards } from './data/tarotCards'
+import { translations } from './data/translations'
 import TarotCard from'./components/TarotCard'
 
 function App() {
+  type Language = 'ja' | 'zh';
+  const languageList: Language[] = ['ja', 'zh']
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>('ja')
   const [selectedCard, setSelectedCard] = useState(tarotCards[0]);
   const [isDrawn, setIsDrawn] = useState(false);
+
+  function changeLanguage(language: Language) {
+    setSelectedLanguage(language);
+  }
 
   function drawCard() {
     if (isDrawn) {
@@ -19,19 +27,27 @@ function App() {
 
   return (
     <main className="app">
-      <h1>✦ Tarot ✦</h1>
-      <p>靜心一刻，讓今日的牌為你指引方向</p>
+      <h1>✦ Arcana ✦</h1>
+      <p>{translations.subtitle[selectedLanguage]}</p>
+
+      <div className='language-div'>
+        {languageList.map((language) => (
+          <button key={language} onClick={() => changeLanguage(language)}>
+            {translations.languageBtn[language]}
+          </button>
+        ))}
+      </div>
 
       <TarotCard
-        name = {isDrawn ? selectedCard.name : ''}
+        name = {isDrawn ? selectedCard.name[selectedLanguage] : ''}
         image = {selectedCard.image}
-        keywords = {isDrawn ? selectedCard.keywords : []}
-        reading={isDrawn ? selectedCard.reading : ''}
+        keywords = {isDrawn ? selectedCard.keywords[selectedLanguage] : []}
+        reading={isDrawn ? selectedCard.reading[selectedLanguage] : ''}
         isDrawn={isDrawn}
       />
 
       <button onClick={drawCard}>
-        {isDrawn ? '再抽一次' : '抽出今日的牌'}
+        {isDrawn ? translations.redrawBtn[selectedLanguage] : translations.drawBtn[selectedLanguage]}
       </button>
     </main>
   )
