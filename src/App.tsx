@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import { tarotCards } from './data/tarotCards'
 import { translations } from './data/translations'
@@ -6,10 +6,18 @@ import TarotCard from'./components/TarotCard'
 
 function App() {
   type Language = 'ja' | 'zh';
-  const languageList: Language[] = ['ja', 'zh']
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>('ja')
+  const languageList: Language[] = ['ja', 'zh'];
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>('ja');
   const [selectedCard, setSelectedCard] = useState(tarotCards[0]);
   const [isDrawn, setIsDrawn] = useState(false);
+
+  useEffect(() => {
+    // 先に写真を読み込ませる
+    tarotCards.forEach((card) => {
+      const img = new Image();
+      img.src = card.image;
+    })
+  }, []);
 
   function changeLanguage(language: Language) {
     setSelectedLanguage(language);
@@ -27,6 +35,17 @@ function App() {
 
   return (
     <main className="app">
+      {/* <div className="stars">
+        {stars.map((star, index) => (
+          <span key={index} className="star" style={{
+            top: star.top,
+            left: star.left,
+            right: star.right,
+            bottom: star.bottom
+          }}>✦</span>
+        ))}
+      </div> */}
+
       <h1 className="title">✦ Arcana ✦</h1>
       <p className="subtitle">{translations.subtitle[selectedLanguage]}</p>
 

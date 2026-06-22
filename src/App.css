@@ -2,7 +2,6 @@ body {
   margin: 0;
   background: #12100e;
   color: #f5edd6;
-  font-family: serif;
 }
 
 .app {
@@ -22,7 +21,7 @@ body {
 }
 
 .subtitle {
-  font-size: clamp(14px, 18px, 22px);
+  font-size: clamp(14px, 16px, 20px);
   color: #c8bfa8;
 }
 
